@@ -4,5 +4,46 @@ sources:
   - name: gz_raw_data
     tables:
       - name: raw_gz_sales
+        description: sales of Greenweek / we have on row per product_id found in each orders_id
+        columns:
+          - name: date_date
+            description: date of purchase
+          - name: orders_id
+            description: the reference of the orders
+            tests:
+              - unique
+              - not_null
+          - name: pdt_id
+            description: product reference
+            tests:
+              - unique
+              - not_null
+          - name: revenue
+            description: the revenue per order_id
+          - name: quantity
+            description: the quantity of product for the order_id
       - name: raw_gz_product
+        description: product details / product_id and product price
+        columns:
+          - name: products_id
+            description: product reference
+            tests:
+              - unique
+              - not_null                      
+          - name: purchase_price
+            description: the price per unit product                       
       - name: raw_gz_ship
+        description: shipping cost of the order_id
+        columns:
+          - name: orders_id
+            description: the reference of the order
+            tests:
+              - unique
+              - not_null   
+          - name: shipping fee
+            description: the fee associated with the shipping of order_id
+          - name: logcost
+            description: the logistic cost of the order_id
+          - name: ship_cost
+            description: the shippling cost of the order_id
+          
